@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>JR東日本スタートアッププログラム2026春｜skyer提案書 v3.5 FINAL（提出用最新版）</title>
+<style>
+  :root {
+    --jr-green: #008752;
+    --jr-dark: #1a3a2a;
+    --accent: #d97706;
+    --animal: #b45309;
+    --tech: #0369a1;
+    --skydog: #ea580c;
+    --kemono: #6366f1;
+    --commit: #be123c;
+    --synergy: #7c3aed;
+    --biz: #0f766e;
+    --bg: #fafaf7;
+    --paper: #ffffff;
+    --text: #1f2937;
+    --muted: #6b7280;
+    --border: #e5e7eb;
+    --highlight: #fef3c7;
+    --wildlife: #ecfdf5;
+    --techbg: #eff6ff;
+    --skydogbg: #fff7ed;
+    --kemonobg: #eef2ff;
+    --commitbg: #fff1f2;
+    --synergybg: #f5f3ff;
+    --bizbg: #f0fdfa;
+  }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif; background: var(--bg); color: var(--text); line-height: 1.8; margin: 0; padding: 40px 20px; }
+  .container { max-width: 900px; margin: 0 auto; background: var(--paper); padding: 60px 70px; box-shadow: 0 2px 20px rgba(0,0,0,0.05); border-radius: 8px; }
+  .header { border-top: 6px solid var(--jr-green); margin: -60px -70px 50px; padding: 40px 70px 30px; background: linear-gradient(135deg, #f0f7f3 0%, #ecfdf5 100%); }
+  .meta { color: var(--muted); font-size: 13px; letter-spacing: 0.1em; margin-bottom: 8px; }
+  .title { font-size: 34px; font-weight: 800; color: var(--jr-dark); line-height: 1.4; margin: 0 0 12px; letter-spacing: -0.02em; }
+  .subtitle { font-size: 17px; color: var(--jr-green); font-weight: 600; margin: 0 0 24px; }
+  .oneliner { background: var(--jr-dark); color: #fff; padding: 26px 30px; border-radius: 6px; font-size: 16px; line-height: 1.9; font-weight: 600; }
+  .oneliner strong { color: #ffd966; }
+  .oneliner .wildlife-tag { color: #6ee7b7; }
+
+  h2 { color: var(--jr-dark); font-size: 22px; margin: 50px 0 20px; padding: 12px 0 12px 18px; border-left: 6px solid var(--jr-green); background: #f5faf7; }
+  h2.wildlife-section { border-left-color: var(--animal); background: var(--wildlife); }
+  h2.tech-section { border-left-color: var(--tech); background: var(--techbg); }
+  h2.product-section { border-left-color: var(--skydog); background: linear-gradient(90deg, var(--skydogbg) 0%, var(--kemonobg) 100%); }
+  h2.commit-section { border-left-color: var(--commit); background: var(--commitbg); }
+  h2.synergy-section { border-left-color: var(--synergy); background: var(--synergybg); }
+  h2.biz-section { border-left-color: var(--biz); background: var(--bizbg); }
+
+  h3 { color: var(--jr-green); font-size: 17px; margin: 28px 0 12px; padding-bottom: 6px; border-bottom: 2px dotted var(--border); }
+  p { margin: 12px 0; }
+
+  table { border-collapse: collapse; width: 100%; margin: 16px 0; font-size: 14px; }
+  th, td { border: 1px solid var(--border); padding: 10px 14px; text-align: left; vertical-align: top; }
+  th { background: #f0f7f3; color: var(--jr-dark); font-weight: 700; }
+  td.center { text-align: center; }
+  td.num { text-align: center; font-weight: 700; color: var(--jr-green); }
+
+  .callout { background: var(--highlight); border-left: 4px solid var(--accent); padding: 14px 18px; margin: 18px 0; border-radius: 4px; font-size: 14px; }
+  .callout-wildlife { background: var(--wildlife); border-left-color: var(--animal); }
+  .callout-tech { background: var(--techbg); border-left-color: var(--tech); }
+  .callout-commit { background: var(--commitbg); border-left-color: var(--commit); }
+  .callout-synergy { background: var(--synergybg); border-left-color: var(--synergy); }
+  .callout-biz { background: var(--bizbg); border-left-color: var(--biz); }
+  .callout-product { background: linear-gradient(90deg, var(--skydogbg) 0%, var(--kemonobg) 100%); border-left-color: var(--skydog); }
+
+  .pillar { background: #f5faf7; border: 1px solid #d6eadd; border-radius: 6px; padding: 20px 24px; margin: 14px 0; }
+  .pillar.wildlife-pillar { background: var(--wildlife); border-color: #a7f3d0; }
+  .pillar-title { font-weight: 800; color: var(--jr-dark); font-size: 16px; margin-bottom: 6px; }
+  .pillar-icon { display: inline-block; width: 28px; height: 28px; background: var(--jr-green); color: #fff; border-radius: 50%; text-align: center; line-height: 28px; font-weight: 700; margin-right: 8px; font-size: 14px; }
+  .pillar.wildlife-pillar .pillar-icon { background: var(--animal); }
+
+  .dual-shield { display: grid; grid-template-columns: 1fr auto 1fr; gap: 18px; align-items: center; margin: 24px 0; }
+  .shield-box { background: #f5faf7; border: 2px solid var(--jr-green); border-radius: 8px; padding: 22px; text-align: center; }
+  .shield-box.wildlife { background: var(--wildlife); border-color: var(--animal); }
+  .shield-label { font-size: 12px; color: var(--muted); margin-bottom: 6px; letter-spacing: 0.1em; }
+  .shield-title { font-size: 18px; font-weight: 800; color: var(--jr-dark); margin-bottom: 8px; }
+  .shield-desc { font-size: 13px; color: var(--text); line-height: 1.6; }
+  .shield-plus { font-size: 32px; font-weight: 800; color: var(--jr-green); }
+
+  /* Product cards */
+  .product-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin: 20px 0; }
+  .product-card { border-radius: 10px; padding: 24px; border: 2px solid; }
+  .product-card.skydog { background: var(--skydogbg); border-color: var(--skydog); }
+  .product-card.kemono { background: var(--kemonobg); border-color: var(--kemono); }
+  .product-brand { font-size: 11px; letter-spacing: 0.15em; margin-bottom: 4px; font-weight: 700; }
+  .product-brand.skydog { color: var(--skydog); }
+  .product-brand.kemono { color: var(--kemono); }
+  .product-name { font-size: 26px; font-weight: 800; letter-spacing: 0.02em; margin-bottom: 8px; }
+  .product-name.skydog { color: var(--skydog); }
+  .product-name.kemono { color: var(--kemono); }
+  .product-tagline { font-size: 13px; color: var(--text); font-weight: 600; margin-bottom: 12px; }
+  .product-desc { font-size: 13px; color: var(--text); line-height: 1.7; }
+  .product-desc ul { padding-left: 18px; margin: 6px 0; }
+  .product-desc li { margin: 3px 0; }
+
+  .loop-diagram { background: linear-gradient(135deg, var(--skydogbg) 0%, var(--kemonobg) 100%); border: 2px solid #ddd; border-radius: 10px; padding: 24px; text-align: center; margin: 20px 0; font-size: 14px; line-height: 2; }
+  .loop-diagram strong { font-size: 16px; }
+
+  .commit-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 18px 0; }
+  .commit-card { background: var(--commitbg); border: 2px solid var(--commit); border-radius: 8px; padding: 20px; text-align: center; }
+  .commit-num { font-size: 28px; font-weight: 800; color: var(--commit); line-height: 1.2; }
+  .commit-unit { font-size: 14px; color: var(--commit); font-weight: 600; }
+  .commit-label { font-size: 12px; color: var(--muted); margin-top: 8px; }
+
+  .evolution-card { background: #fff; border: 1px solid var(--border); border-left: 4px solid var(--tech); padding: 14px 18px; margin: 12px 0; border-radius: 4px; }
+  .evolution-card.jre { border-left-color: var(--jr-green); }
+  .evolution-card.skydog { border-left-color: var(--skydog); }
+  .evolution-card.kemono { border-left-color: var(--kemono); }
+  .evolution-title { font-weight: 700; color: var(--tech); font-size: 14px; margin-bottom: 4px; }
+  .evolution-card.jre .evolution-title { color: var(--jr-green); }
+  .evolution-card.skydog .evolution-title { color: var(--skydog); }
+  .evolution-card.kemono .evolution-title { color: var(--kemono); }
+  .evolution-arrow { display: inline-block; color: var(--tech); margin: 0 8px; font-weight: 700; }
+
+  .closing { margin-top: 60px; padding: 30px 32px; background: linear-gradient(135deg, #f5faf7 0%, #ecfdf5 100%); border: 1px solid #d6eadd; border-radius: 6px; font-size: 15px; line-height: 1.9; }
+  .closing strong { color: var(--jr-dark); }
+
+  .footer { margin-top: 50px; padding-top: 24px; border-top: 1px solid var(--border); font-size: 12px; color: var(--muted); text-align: center; }
+
+  .badge { display: inline-block; background: var(--jr-green); color: #fff; font-size: 11px; padding: 3px 10px; border-radius: 12px; margin-right: 6px; font-weight: 600; }
+  .badge-wildlife { background: var(--animal); }
+  .badge-tech { background: var(--tech); }
+  .badge-skydog { background: var(--skydog); }
+  .badge-kemono { background: var(--kemono); }
+  .badge-commit { background: var(--commit); }
+  .badge-synergy { background: var(--synergy); }
+  .badge-biz { background: var(--biz); }
+  .badge-new { background: #dc2626; }
+  ul { padding-left: 24px; }
+  li { margin: 6px 0; }
+
+  .toc { background: #f9f9f6; border: 1px solid var(--border); padding: 18px 24px; border-radius: 6px; margin-bottom: 40px; font-size: 14px; }
+  .toc a { color: var(--jr-dark); text-decoration: none; display: block; padding: 4px 0; }
+  .toc a:hover { color: var(--jr-green); text-decoration: underline; }
+
+  .stat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 18px 0; }
+  .stat { background: #fff; border: 1px solid var(--border); border-radius: 6px; padding: 16px; text-align: center; }
+  .stat-num { font-size: 22px; font-weight: 800; color: var(--jr-green); line-height: 1.2; }
+  .stat-label { font-size: 12px; color: var(--muted); margin-top: 6px; }
+
+  .quote { border-left: 3px solid var(--animal); padding-left: 18px; margin: 18px 0; font-style: italic; color: #4b5563; }
+
+  .biz-table th { background: var(--bizbg); color: var(--biz); }
+  .synergy-card { background: #fff; border: 1px solid #ddd6fe; border-radius: 6px; padding: 16px 20px; margin: 10px 0; }
+  .synergy-card-title { font-weight: 800; color: var(--synergy); font-size: 15px; margin-bottom: 6px; }
+
+  .option-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin: 18px 0; }
+  .option-card { background: var(--commitbg); border: 1px solid #fecdd3; border-radius: 6px; padding: 16px; }
+  .option-title { font-weight: 800; color: var(--commit); font-size: 14px; margin-bottom: 6px; }
+  .option-desc { font-size: 13px; color: var(--text); line-height: 1.6; }
+
+  .biz-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 18px 0; }
+  .biz-card { background: var(--bizbg); border: 2px solid var(--biz); border-radius: 8px; padding: 16px 12px; text-align: center; }
+  .biz-phase { font-size: 12px; color: var(--biz); font-weight: 700; margin-bottom: 4px; }
+  .biz-num { font-size: 20px; font-weight: 800; color: var(--biz); line-height: 1.2; }
+  .biz-unit { font-size: 12px; color: var(--biz); }
+  .biz-desc { font-size: 11px; color: var(--muted); margin-top: 6px; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <div class="meta">JR東日本スタートアッププログラム 2026 春募集 ／ ENTRY PROPOSAL v3.5 FINAL（提出用最新版）</div>
+    <h1 class="title">鉄道を守る、動物を守る。</h1>
+    <div class="subtitle">〜 <strong style="color:#ea580c">SKY DOG</strong> × <strong style="color:#6366f1">KEMONO MAP</strong> で実現する世界初の Wildlife-Positive Railway 〜</div>
+    <div class="oneliner">
+      シカ衝突件数を減らすことは、運休損失を減らすことであり、<br>
+      <span class="wildlife-tag">同時に、年間数千頭規模の野生動物の命を救う</span>ことでもある。<br>
+      <strong>すでに存在する2つのプロダクトで、明日から始められます。</strong>
+    </div>
+  </div>
+
+  <div class="toc">
+    <strong>目次</strong>
+    <a href="#s0">0. 本提案の核心 — "二つの守る" という新しい鉄道運用思想</a>
+    <a href="#sprod">★ 中核プロダクト：SKY DOG × KEMONO MAP</a>
+    <a href="#sevo">★ "共に進化する" — skyerとJR東日本、それぞれの進化機会</a>
+    <a href="#scommit">★ skyerの本気度 — 共創のための自己投資とリスク共有</a>
+    <a href="#ssyn">★ グループ会社別 連携マトリクス</a>
+    <a href="#sbiz">★ ユニットエコノミクスと事業規模試算</a>
+    <a href="#sip">★ 知財・国際標準化戦略</a>
+    <a href="#simp">★ 社会的インパクト・PR・政策連携</a>
+    <a href="#s1">1. 解決する具体的課題</a>
+    <a href="#s2">2. 提案サービス — 4つの統合ドローンソリューション</a>
+    <a href="#s3">3. なぜskyerなのか</a>
+    <a href="#s4">4. なぜJR東日本でなければならないか</a>
+    <a href="#s5">5. 実証ロードマップ</a>
+    <a href="#s6">6. 鉄道業界における実態データ</a>
+    <a href="#s7">7. JR東日本にもたらす独自価値</a>
+    <a href="#s8">8. TNFD・ネイチャーポジティブへの直接接続</a>
+    <a href="#s9">9. 求める支援</a>
+    <a href="#s10">10. 締めの一言</a>
+  </div>
+
+  <h2 id="s0" class="wildlife-section">0. 本提案の核心 — "二つの守る" という新しい鉄道運用思想</h2>
+  <p>従来、鉄道インフラの鳥獣・動物対策は<strong>「鉄道を守る」観点だけ</strong>で語られてきました。しかし、シカ衝突件数を減らすという行為は、同時に<strong>「動物の命を守る」</strong>ことでもあります。</p>
+
+  <div class="dual-shield">
+    <div class="shield-box">
+      <div class="shield-label">RAILWAY</div>
+      <div class="shield-title">鉄道を守る</div>
+      <div class="shield-desc">運休・輸送障害の削減<br>復旧コストの削減<br>定時運行の維持</div>
+    </div>
+    <div class="shield-plus">＋</div>
+    <div class="shield-box wildlife">
+      <div class="shield-label">WILDLIFE</div>
+      <div class="shield-title">動物を守る</div>
+      <div class="shield-desc">列車衝突死の削減<br>生息地分断の緩和<br>沿線生物多様性の保全</div>
+    </div>
+  </div>
+
+  <div class="callout callout-wildlife">
+    本提案は<strong>「動物を排除する」のではなく「動物を傷つけずに、列車との接近そのものを発生させない」</strong>運用設計です。これは "Wildlife-Friendly Infrastructure" として国際的に評価される思想であり、TNFD開示の「自然への負のインパクト削減」KPIに<strong>定量的に直結</strong>します。</div>
+
+  <!-- 中核プロダクト -->
+  <h2 id="sprod" class="product-section">★ 中核プロダクト：SKY DOG × KEMONO MAP <span class="badge badge-skydog">PRODUCT</span></h2>
+
+  <p>本提案は、skyerが<strong>すでに事業展開している2つのプロダクト</strong>を、JR東日本沿線環境に適用・進化させるものです。「これから作る」ではなく「<strong>すでに動いている</strong>」プロダクトであることが、本提案の実現確度を決定的に高めます。</p>
+
+  <div class="product-grid">
+    <div class="product-card skydog">
+      <div class="product-brand skydog">FIELD OPERATION</div>
+      <div class="product-name skydog">SKY DOG</div>
+      <div class="product-tagline">— 鳥獣の生息域調査・追い払い・運搬の統合ドローンサービス —</div>
+      <div class="product-desc">
+        <ul>
+          <li><strong>生息域調査</strong>（沿線・駅周辺の鳥獣生息把握）</li>
+          <li><strong>非殺傷の追い払い・忌避運用</strong>（動物を傷つけずに線路外へ）</li>
+          <li><strong>重量物運搬</strong>（倒木・支障物の撤去、保線資材の搬送）</li>
+          <li>自治体6年運用実績を商品化済み</li>
+        </ul>
+      </div>
+    </div>
+    <div class="product-card kemono">
+      <div class="product-brand kemono">DATA PLATFORM</div>
+      <div class="product-name kemono">KEMONO MAP</div>
+      <div class="product-tagline">— 出没予測 × 介入最適化のデータ型プラットフォーム —</div>
+      <div class="product-desc">
+        <ul>
+          <li><strong>調査データの蓄積・可視化</strong>（沿線種別・出没分布）</li>
+          <li><strong>AIによる出没予測</strong>（時期・場所・気象連動）</li>
+          <li><strong>介入指示の最適化</strong>（SKY DOG出動タイミング判断）</li>
+          <li>自治体・他鉄道・TNFD開示へのデータ提供基盤</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="loop-diagram">
+    <strong>2プロダクトの相互フィードバックループ</strong><br><br>
+    <span style="color:#6366f1;font-weight:700">KEMONO MAP</span>（予測） ─→ <span style="color:#ea580c;font-weight:700">SKY DOG</span>（実行）<br>
+    ↑ ────── データ蓄積・学習 ────── ↓<br><br>
+    実行データが予測精度を高め、予測精度が実行効率を高める<br>
+    <strong>「使えば使うほど進化する」自己強化型エコシステム</strong>
+  </div>
+
+  <div class="callout callout-product">
+    Liberaware・CalTa・KDDIスマートドローン等の既存JR東日本パートナーが「測る・見る」点検技術であるのに対し、SKY DOG × KEMONO MAPは<strong>「予測する・行動する・命を救う」運用エコシステム</strong>であり、完全に異なるレイヤーで価値を提供します。
+  </div>
+
+  <!-- 相互進化 -->
+  <h2 id="sevo" class="tech-section">★ "共に進化する" — skyerとJR東日本、それぞれの進化機会</h2>
+
+  <h3>SKY DOG × KEMONO MAP が JR東日本フィールドで進化する4つの方向</h3>
+  <div class="evolution-card skydog">
+    <div class="evolution-title">SKY DOG ① 線形連続環境への適応進化</div>
+    "点" の運用（砂丘）<span class="evolution-arrow">→</span>"線" の運用（約7,401kmの線形フィールド）。沿線特有の運用パターンを標準化し、海外鉄道展開の基盤に。
+  </div>
+  <div class="evolution-card kemono">
+    <div class="evolution-title">KEMONO MAP ① 鉄道沿線×高速移動体データの世界初取得</div>
+    列車接近時の動物行動データという<strong>世界初のデータセット</strong>を取得。出没予測モデルが「列車到達時刻と動物退避時間の予測」という新領域に拡張。
+  </div>
+  <div class="evolution-card skydog">
+    <div class="evolution-title">SKY DOG ② 多様な気候帯縦断による運用汎化</div>
+    青森〜伊豆まで縦断する沿線環境で運用することで、寒冷地・温暖地・海岸部・山岳部の Wildlife-Positive 運用が標準化。
+  </div>
+  <div class="evolution-card kemono">
+    <div class="evolution-title">KEMONO MAP ② データホルダーとしての価値急上昇</div>
+    日本最大級の沿線生物多様性データプラットフォームへ。<strong>保険・研究・自治体・他鉄道</strong>への外販可能なデータ事業に進化。
+  </div>
+
+  <h3>JR東日本も進化する4つの機会</h3>
+  <div class="evolution-card jre">
+    <div class="evolution-title">① 鉄道事業者 → 生物多様性事業者へ</div>
+    「日本の自然を守る鉄道」という<strong>新業態</strong>を獲得。輸送業から一歩進んだ社会的存在意義の再定義。
+  </div>
+  <div class="evolution-card jre">
+    <div class="evolution-title">② 世界最大級の沿線生物多様性データホルダーへ</div>
+    KEMONO MAPに蓄積される7,401kmの連続データは、TNFD最先進事例として<strong>国際投資家・ESG格付機関からの評価が飛躍的に向上</strong>。
+  </div>
+  <div class="evolution-card jre">
+    <div class="evolution-title">③ コストセンター → 価値創出センターへ</div>
+    鳥獣対策費用が<strong>「救命動物数KPI生成エンジン」</strong>に転換。同じ支出で社会的価値と財務価値を同時に生み出す構造に。
+  </div>
+  <div class="evolution-card jre">
+    <div class="evolution-title">④ 受託発注者 → 共創イノベーターへ</div>
+    本事業はJR東日本グループのスタートアップ共創成功事例の<strong>象徴ケース</strong>となり、今後の人材・投資・パートナー獲得力に直結。
+  </div>
+
+  <!-- コミットメント -->
+  <h2 id="scommit" class="commit-section">★ skyerの本気度 — 共創のための自己投資とリスク共有 <span class="badge badge-commit">COMMITMENT</span></h2>
+
+  <p>本事業は受託案件ではなく<strong>skyerの中期経営計画における最優先プロジェクト</strong>として位置づけます。リソース配分の本気度を以下に明示します。</p>
+
+  <div class="commit-grid">
+    <div class="commit-card">
+      <div class="commit-num">500</div>
+      <div class="commit-unit">万円</div>
+      <div class="commit-label">初年度自己投資<br>（実証機材・AI開発）</div>
+    </div>
+    <div class="commit-card">
+      <div class="commit-num">2</div>
+      <div class="commit-unit">名 専任</div>
+      <div class="commit-label">JR東日本フィールド<br>専任チーム発足</div>
+    </div>
+    <div class="commit-card">
+      <div class="commit-num">3</div>
+      <div class="commit-unit">年計画</div>
+      <div class="commit-label">中期経営計画の<br>最優先プロジェクトに位置付け</div>
+    </div>
+  </div>
+
+  <h3>リスク共有を一段深める4つのオプション</h3>
+  <p>共創パートナーとして、以下の契約・資本スキームを<strong>JR東日本側のご希望に応じて選択可能</strong>とします：</p>
+
+  <div class="option-grid">
+    <div class="option-card">
+      <div class="option-title">A. 成果連動契約（Pay-for-Performance）</div>
+      <div class="option-desc">「シカ衝突件数◯%減」「救命動物数◯頭達成」等の成果指標に応じた変動報酬。失敗時はskyer負担、成功時のみフィー発生の設計も可。</div>
+    </div>
+    <div class="option-card">
+      <div class="option-title">B. 共同事業会社設立</div>
+      <div class="option-desc">Phase 3以降、JR東日本スタートアップ社との合弁会社（JV）設立を視野。SKY DOG × KEMONO MAPを核とした共同事業会社化。</div>
+    </div>
+    <div class="option-card">
+      <div class="option-title">C. CVC出資受け入れ</div>
+      <div class="option-desc">JR東日本スタートアップ社からのskyer出資を積極歓迎。ガバナンス・成長戦略を共有。</div>
+    </div>
+    <div class="option-card">
+      <div class="option-title">D. 経営層レベルの定例接続</div>
+      <div class="option-desc">skyer代表が、JR東日本サステナビリティ担当役員と定例会合を持ち、戦略レベルでの伴走を実施。</div>
+    </div>
+  </div>
+
+  <!-- グループ会社連携マトリクス -->
+  <h2 id="ssyn" class="synergy-section">★ グループ会社別 連携マトリクス <span class="badge badge-synergy">SYNERGY</span></h2>
+  <p>本事業はJR東日本グループ内の複数会社・部門と有機的に連携し、グループ横断のシナジーを生みます。</p>
+
+  <div class="synergy-card">
+    <div class="synergy-card-title">▎JR東日本研究開発センター</div>
+    <strong>KEMONO MAPの予測モデル共同研究</strong>（鉄道環境特化の出没予測アルゴリズム）。論文・特許・標準化を共同で推進。
+  </div>
+  <div class="synergy-card">
+    <div class="synergy-card-title">▎JR東日本ビルテック</div>
+    <strong>駅構内のSKY DOG運用連携</strong>。既存ドローン点検事業と棲み分け、生体管理レイヤーで補完。
+  </div>
+  <div class="synergy-card">
+    <div class="synergy-card-title">▎JR東日本クロスステーション（NewDays・駅ナカ）</div>
+    <strong>KEMONO MAPデータを活用した沿線生物多様性PR</strong>（パンフ・スタンプラリー・「いきもの駅」ブランディング）。JTOSバイオーム「いきものGO」連動も視野。
+  </div>
+  <div class="synergy-card">
+    <div class="synergy-card-title">▎JR東日本不動産</div>
+    駅周辺施設の <strong>Wildlife-Friendly 認証</strong>提案。テナント企業のESG対応支援・不動産価値向上施策。
+  </div>
+  <div class="synergy-card">
+    <div class="synergy-card-title">▎JTOS（鉄道横断型社会実装コンソーシアム）</div>
+    JTOS新弾としての展開。<strong>JR東日本スタートアップ社・東急・小田急・西武HDへの連鎖的展開</strong>。鉄道業界横断の共通プラットフォーム化。
+  </div>
+  <div class="synergy-card">
+    <div class="synergy-card-title">▎JR東日本グループ サステナビリティ部門</div>
+    <strong>KEMONO MAPからTNFD開示への直接データ供給</strong>。「自然への負のインパクト削減」KPIに救命動物数を組み込み、業界初の定量開示を共創。
+  </div>
+
+  <!-- ユニットエコノミクス -->
+  <h2 id="sbiz" class="biz-section">★ ユニットエコノミクスと事業規模試算 <span class="badge badge-biz">BUSINESS</span></h2>
+
+  <h3>収益構造（2プロダクトの役割分担）</h3>
+  <table>
+    <thead><tr><th>収益源</th><th>プロダクト</th><th>事業モデル</th></tr></thead>
+    <tbody>
+      <tr><td>業務委託（調査・追払い・運搬）</td><td><strong style="color:#ea580c">SKY DOG</strong></td><td>従量／拠点課金</td></tr>
+      <tr><td>データプラットフォーム利用料</td><td><strong style="color:#6366f1">KEMONO MAP</strong></td><td>SaaS（サブスクリプション）</td></tr>
+      <tr><td>外販データライセンス</td><td><strong style="color:#6366f1">KEMONO MAP</strong></td><td>データライセンス</td></tr>
+      <tr><td>他鉄道・自治体・電力等への展開</td><td>両プロダクト</td><td>パッケージ販売</td></tr>
+    </tbody>
+  </table>
+
+  <h3>ユニットエコノミクス（Phase 1想定）</h3>
+  <table class="biz-table">
+    <thead><tr><th>運用単位</th><th>サービス内容</th><th>想定年間売上</th></tr></thead>
+    <tbody>
+      <tr><td>1駅あたり</td><td>SKY DOG（営巣・フン害対応）</td><td>年 100〜200万円</td></tr>
+      <tr><td>1路線あたり</td><td>SKY DOG（シカ・倒木対応）＋ KEMONO MAP（出没予測）</td><td>年 500〜800万円</td></tr>
+      <tr><td>1ドローンドック<br>（Phase 2）</td><td>SKY DOG 4サービス＋ KEMONO MAP統合運用</td><td>年 1,000万円超</td></tr>
+    </tbody>
+  </table>
+
+  <h3>事業規模成長シナリオ</h3>
+  <div class="biz-grid">
+    <div class="biz-card">
+      <div class="biz-phase">Phase 1（12ヶ月）</div>
+      <div class="biz-num">2,000〜<br>3,600</div>
+      <div class="biz-unit">万円</div>
+      <div class="biz-desc">関東10駅＋<br>ローカル2路線</div>
+    </div>
+    <div class="biz-card">
+      <div class="biz-phase">Phase 2（24ヶ月）</div>
+      <div class="biz-num">2〜5</div>
+      <div class="biz-unit">億円</div>
+      <div class="biz-desc">JR東日本全線<br>ドック網整備</div>
+    </div>
+    <div class="biz-card">
+      <div class="biz-phase">Phase 3（36ヶ月）</div>
+      <div class="biz-num">5〜10</div>
+      <div class="biz-unit">億円</div>
+      <div class="biz-desc">JR西連携＋<br>外販開始</div>
+    </div>
+    <div class="biz-card">
+      <div class="biz-phase">Phase 4（60ヶ月）</div>
+      <div class="biz-num">20〜30</div>
+      <div class="biz-unit">億円</div>
+      <div class="biz-desc">私鉄／高速／<br>電力／海外</div>
+    </div>
+  </div>
+
+  <h3>市場の積み上げ（Phase 4到達時の想定TAM）</h3>
+  <ul>
+    <li><strong>JRグループ7社</strong>：旅客6社＋貨物1社、線路総延長約2万km</li>
+    <li><strong>大手私鉄16社</strong>：線路総延長約3,000km</li>
+    <li><strong>高速道路NEXCO3社</strong>：線形連続インフラとして同構造</li>
+    <li><strong>電力会社の鉄塔・送電線</strong>：同じく Wildlife 課題構造</li>
+    <li><strong>海外鉄道</strong>：欧州・北米・アジアの Wildlife-Positive 鉄道需要</li>
+  </ul>
+
+  <div class="callout callout-biz">
+    <strong>JR東日本からのSKY DOG業務委託（Phase 0〜2）だけでも黒字化可能な設計</strong>。KEMONO MAPのSaaS化・データ外販はすべてアップサイド。
+  </div>
+
+  <!-- 知財・標準化 -->
+  <h2 id="sip" class="tech-section">★ 知財・国際標準化戦略 <span class="badge badge-tech">IP STRATEGY</span></h2>
+  <table>
+    <thead><tr><th>領域</th><th>戦略内容</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>商標</strong></td>
+        <td><strong>SKY DOG・KEMONO MAP</strong>をskyer登録商標として保護。JR東日本との共同利用ライセンスも検討。</td>
+      </tr>
+      <tr>
+        <td><strong>特許出願</strong></td>
+        <td>KEMONO MAPの出没予測アルゴリズム／SKY DOGの非殺傷介入手法／列車運行情報との連動制御等を中心に出願計画。<strong>JR東日本との共同出願</strong>も視野。</td>
+      </tr>
+      <tr>
+        <td><strong>学術連携</strong></td>
+        <td>大学・<strong>鉄道総合技術研究所</strong>との共同論文化。「線形連続環境の Wildlife-Positive 運用」を新研究領域として確立。</td>
+      </tr>
+      <tr>
+        <td><strong>国際標準化</strong></td>
+        <td><strong>UIC（国際鉄道連合）</strong>・<strong>IUCN（国際自然保護連合）</strong>への提案を中期視野。日本発のグローバル標準化を狙う。</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- 社会的インパクト・PR -->
+  <h2 id="simp" class="wildlife-section">★ 社会的インパクト・PR・政策連携</h2>
+
+  <h3>メディア・PRインパクト</h3>
+  <ul>
+    <li><strong>「世界初の Wildlife-Positive Railway」</strong>として、日経・朝日・NHK等の主要メディア露出を想定</li>
+    <li>SKY DOG・KEMONO MAPという<strong>プロダクト名による訴求力</strong>でブランド認知度を加速</li>
+    <li>海外メディア（Reuters・Bloomberg・BBC）への発信ポテンシャル（ESG文脈で）</li>
+    <li>広告換算で<strong>年数億円規模</strong>のメディア露出効果を見込む</li>
+  </ul>
+
+  <h3>政策連携</h3>
+  <ul>
+    <li><strong>環境省</strong> ネイチャーポジティブ経済移行戦略の<strong>象徴事例</strong>化を狙う</li>
+    <li><strong>国土交通省</strong> 鉄道局との連携（鉄道事業者の自然関連リスク対応事例）</li>
+    <li><strong>農林水産省</strong> 鳥獣害対策との横串連携（沿線×農地の連続管理）</li>
+  </ul>
+
+  <h3>国際発信ロードマップ</h3>
+  <ul>
+    <li>Phase 2〜3：<strong>COP（生物多様性COP・気候変動COP）</strong>でのサイドイベント発表</li>
+    <li>Phase 3：<strong>UIC（国際鉄道連合）</strong>世界大会での標準化提案</li>
+    <li>Phase 4：<strong>WEF（世界経済フォーラム）</strong>ネイチャーポジティブ分科会での主要事例</li>
+  </ul>
+
+  <h2 id="s1">1. 解決する具体的課題 — JR東日本公開ニーズへの直接回答</h2>
+  <table>
+    <thead><tr><th style="width:50%">JR東日本の公開課題（原文要旨）</th><th>対応プロダクト</th><th>skyer実績</th></tr></thead>
+    <tbody>
+      <tr><td>駅ホームのハトのフン害、青なすで効果なし</td><td><span class="badge badge-skydog">SKY DOG</span><span class="badge badge-kemono">KEMONO MAP</span></td><td>カワウ繁殖抑制・巣除去</td></tr>
+      <tr><td>架線・電気設備のカラス営巣による短絡事故</td><td><span class="badge badge-skydog">SKY DOG</span></td><td>営巣管理ノウハウ</td></tr>
+      <tr><td>蜂の巣の付着、駅務員による作業負担大</td><td><span class="badge badge-skydog">SKY DOG</span></td><td>同上</td></tr>
+      <tr><td>線路沿線のシカ等動物との衝突</td><td><span class="badge badge-skydog">SKY DOG</span><span class="badge badge-kemono">KEMONO MAP</span></td><td>イノシシ・シカ鳥獣害対策</td></tr>
+      <tr><td>沿線樹木倒下・つる草接近で輸送障害</td><td><span class="badge badge-skydog">SKY DOG</span></td><td>重量物回収・運搬／広域パトロール</td></tr>
+      <tr><td>線路用地への侵入監視、夜間踏査の負担</td><td><span class="badge badge-skydog">SKY DOG</span></td><td>鳥取砂丘パトロール6年継続</td></tr>
+      <tr><td>鉄道工事の現場保安要員業務の効率化</td><td><span class="badge badge-skydog">SKY DOG</span></td><td>屋外広域継続運用</td></tr>
+      <tr><td>災害時の倒木・支障物撤去</td><td><span class="badge badge-skydog">SKY DOG</span></td><td>重量物回収・運搬</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="s2">2. 提案サービス — 4つの統合ドローンソリューション</h2>
+
+  <div class="pillar">
+    <div class="pillar-title"><span class="pillar-icon">A</span>沿線広域パトロールドローン <span class="badge badge-skydog">SKY DOG</span></div>
+    <ul>
+      <li>駅・線路用地の侵入監視、夜間自動巡回</li>
+      <li>鳥取砂丘での自治体契約6年継続運用ノウハウをそのまま展開</li>
+      <li>駅務員の踏査負担削減、保安要員業務の効率化</li>
+    </ul>
+  </div>
+
+  <div class="pillar wildlife-pillar">
+    <div class="pillar-title"><span class="pillar-icon">B</span>鳥獣共生ドローン <span class="badge badge-skydog">SKY DOG</span> <span class="badge badge-kemono">KEMONO MAP</span> <span class="badge badge-wildlife">Wildlife-Positive</span></div>
+    <ul>
+      <li><strong>KEMONO MAPの出没予測</strong>に基づき、<strong>SKY DOGが事前に出動</strong>してシカ・イノシシ等を傷つけずに忌避・誘導</li>
+      <li>「衝突が発生してから対処」ではなく「<strong>衝突を発生させない</strong>」設計</li>
+      <li>取得データはKEMONO MAPに蓄積され、予測精度を継続的に向上</li>
+    </ul>
+  </div>
+
+  <div class="pillar wildlife-pillar">
+    <div class="pillar-title"><span class="pillar-icon">C</span>営巣・フン害対策ドローン <span class="badge badge-skydog">SKY DOG</span> <span class="badge badge-wildlife">Wildlife-Positive</span></div>
+    <ul>
+      <li>駅構内ハト、架線カラス、蜂の巣の事前検知と非殺傷除去</li>
+      <li>カワウ繁殖抑制ノウハウ（成体を傷つけない手法）を駅・架線環境に応用</li>
+      <li>「お客様体験を損なわない駅」と「動物を殺さない駅」の両立</li>
+    </ul>
+  </div>
+
+  <div class="pillar">
+    <div class="pillar-title"><span class="pillar-icon">D</span>沿線重量物回収・運搬ドローン <span class="badge badge-skydog">SKY DOG</span></div>
+    <ul>
+      <li>倒木撤去、線路支障物の搬送、災害時の緊急対応</li>
+      <li>平時は保線資材の狭所運搬</li>
+    </ul>
+  </div>
+
+  <h2 id="s3">3. なぜskyerなのか — 競合不在の差別化</h2>
+
+  <h3>① 自治体6年継続運用 — 日本で唯一の長期信頼資産</h3>
+  <p>鳥取県・鳥取砂丘での警備パトロール契約を<strong>6年連続</strong>受託。SKY DOGはこの6年運用の経験を商品化したものであり、JR東日本沿線という同等のセンシティビティを持つフィールドへ即転用可能です。</p>
+
+  <h3>② SKY DOG × KEMONO MAP という独自エコシステム</h3>
+  <p><strong>すでに事業展開中の2プロダクト</strong>の連動運用は、ドローン点検各社（Liberaware／CalTa等）が持つ「測る・見る」技術とは全く異なるレイヤーを扱います。「予測する・行動する・命を救う」運用エコシステムです。</p>
+
+  <h3>③ JR東日本既存ドローンパートナーの完全空白領域</h3>
+  <table>
+    <thead><tr><th>既存パートナー</th><th>守備領域</th><th>skyerが入る領域</th></tr></thead>
+    <tbody>
+      <tr><td>Liberaware</td><td>狭小空間点検（IBIS）</td><td>—</td></tr>
+      <tr><td>CalTa</td><td>デジタルツイン</td><td>—</td></tr>
+      <tr><td>KDDIスマートドローン</td><td>通信・運航管理</td><td>—</td></tr>
+      <tr><td>エアロセンス</td><td>VTOL測量</td><td>—</td></tr>
+      <tr><td>JR東日本ビルテック</td><td>自社建物点検</td><td>—</td></tr>
+      <tr><td>Project SPARROW</td><td>鉄道設備点検（TRL5通過）</td><td>—</td></tr>
+      <tr style="background:#fff7e6"><td><strong>skyer</strong></td><td>—</td><td><strong>SKY DOG × KEMONO MAP<br>（生体・営巣・鳥獣害・広域警備・重量物運搬）</strong></td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="s4">4. なぜJR東日本でなければならないか — アセット不可欠性</h2>
+  <table>
+    <thead><tr><th>JR東日本のアセット</th><th>本事業での役割</th></tr></thead>
+    <tbody>
+      <tr><td>約7,401km の線路用地</td><td>SKY DOG運用と KEMONO MAPデータ進化に不可欠な線形連続フィールド</td></tr>
+      <tr><td>全駅ネットワーク</td><td>ドローン運用拠点／ドック設置</td></tr>
+      <tr><td>JR東日本ビルテック等グループ会社</td><td>駅構内対応の運用連携</td></tr>
+      <tr><td>鉄道事業者としての社会的信用</td><td>自治体・国交省・環境省との許認可交渉力</td></tr>
+      <tr><td>既存保線業務予算</td><td>既存コストの置換による事業立ち上げ</td></tr>
+      <tr><td>鉄道業界初のTNFD Adopterというポジション</td><td>KEMONO MAPデータの世界発信母体</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="s5">5. 実証ロードマップ</h2>
+  <table>
+    <thead><tr><th>Phase</th><th>期間</th><th>アクション</th><th>検証KPI（鉄道×動物 二軸）</th></tr></thead>
+    <tbody>
+      <tr><td class="num">Phase 0</td><td>採択〜3ヶ月</td><td>ローカル線1区間（山田線または上越線）で<strong>SKY DOG × KEMONO MAP</strong>のシカ衝突対策＋沿線・小駅の営巣対策を統合実証<br>専任2名常駐、自己投資500万円投入</td><td>衝突件数▲20〜35%／予測精度60%以上／非殺傷率100%／営巣調査・除去件数</td></tr>
+      <tr><td class="num">Phase 1</td><td>〜12ヶ月</td><td>関東主要10駅＋ローカル線2路線へ拡大／<strong>KEMONO MAP for Railway v1</strong>リリース</td><td>年商2,000〜3,600万円／衝突件数の対照群比較</td></tr>
+      <tr><td class="num">Phase 2</td><td>〜24ヶ月</td><td>JR東日本全線展開／<strong>駅起点ドローンドック網</strong>整備／<strong>KEMONO MAP SaaS化</strong></td><td>年商2〜5億円／年間救命動物数の定量公表</td></tr>
+      <tr><td class="num">Phase 3</td><td>〜36ヶ月</td><td><strong>JR西日本連携</strong>／他鉄道・自治体への外販開始／<strong>JV設立検討</strong></td><td>年商5〜10億円／TNFD開示の業界先進事例化</td></tr>
+      <tr><td class="num">Phase 4</td><td>〜60ヶ月</td><td>私鉄／高速道路／電力鉄塔／海外鉄道への展開</td><td>年商20〜30億円／COP・UIC・WEFでの国際発信</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="s6">6. 鉄道業界における実態データ</h2>
+
+  <h3>JR東日本管内の動物衝突実績</h3>
+  <div class="stat-grid">
+    <div class="stat"><div class="stat-num">1,166件</div><div class="stat-label">JR東日本 動物衝突<br>2018年度</div></div>
+    <div class="stat"><div class="stat-num">1,345件</div><div class="stat-label">JR東日本 動物衝突<br>2019年度（前年比+15%）</div></div>
+    <div class="stat"><div class="stat-num">約80%</div><div class="stat-label">衝突動物のうち<br>シカが占める割合</div></div>
+  </div>
+  <p style="font-size:12px;color:var(--muted)">出典：JR東日本「and E」マガジン／日本経済新聞 ほか</p>
+
+  <h3>全国の参考データ</h3>
+  <ul>
+    <li>2017年度の鉄道輸送障害5,934件中、<strong>人や動物の線路内立入・沿線火災等の外的要因が2,455件（41.4%）</strong>（出典：国土交通省）</li>
+    <li>JR北海道のシカ衝突は2025年に6,705件と9年連続で過去最多更新、調査開始（2016年）から約5.7倍</li>
+  </ul>
+
+  <h3>"被害額の見える化" — 件数から推定する損失額 <span class="badge badge-new">推定試算</span></h3>
+  <p>鉄道業界において、鳥獣・侵入物起因の金銭的損失額については件数の報告義務はあるものの、<strong>金額ベースでの業界横断的な公的開示は確認されていません</strong>。鉄道総合技術研究所には旅客損失の評価手法研究はあるものの、事業者側の損失実額の業界統計は公表されておらず、被害の定量的な見える化は限定的です。</p>
+
+  <p>そこで、公開件数データと1件あたりの想定コスト（復旧対応・遅延運休・振替輸送・車両洗浄修繕・後続列車波及）から、本提案では仮定試算を行います：</p>
+
+  <div style="background:linear-gradient(135deg, #fee2e2 0%, #fef3c7 100%); border:3px solid var(--commit); border-radius:10px; padding:30px; text-align:center; margin:20px 0;">
+    <div style="font-size:14px; color:var(--commit); font-weight:700; letter-spacing:0.1em;">JR東日本 シカ衝突による推定年間損失</div>
+    <div style="font-size:56px; font-weight:800; color:var(--commit); line-height:1.1; margin:12px 0;">約 20.2 億円<span style="font-size:24px;">／年</span></div>
+    <div style="font-size:13px; color:var(--text);">2019年度動物衝突 1,345件 × 1件あたり想定単価 150万円</div>
+    <div style="font-size:12px; color:var(--muted); margin-top:8px;">※ 1件あたり想定単価は、復旧対応・遅延運休・振替輸送・車両洗浄修繕・後続列車波及を含む推定値<br>※ 営巣・侵入・倒木等を含めればさらに拡大</div>
+  </div>
+
+  <h2 id="s6b" class="wildlife-section">★ なぜシカ衝突は減らないのか — 根本原因と既存対策の限界 <span class="badge badge-new">ROOT CAUSE</span></h2>
+
+  <h3>シカ衝突の科学的原因（研究で確立済）</h3>
+  <table>
+    <thead><tr><th>#</th><th>原因</th><th>根拠</th></tr></thead>
+    <tbody>
+      <tr><td>①</td><td><strong>鉄分補給説</strong>：レール×車輪摩擦で生じる鉄粉をシカが舐めに来る</td><td>岩手大ほか学術研究／JR西日本広島支社公式言及</td></tr>
+      <tr><td>②</td><td><strong>時期的二峰型</strong>：6月（出産前）・10月（繁殖期）にピーク</td><td>学術論文（JR盛岡管内調査）</td></tr>
+      <tr><td>③</td><td><strong>夜間・早朝集中</strong>（視認性低下）</td><td>各社統計</td></tr>
+      <tr><td>④</td><td><strong>温暖化×雪減少</strong>で冬期食料確保→個体数増加・行動域拡大</td><td>JR東日本「and E」</td></tr>
+      <tr><td>⑤</td><td><strong>山間部走行区間</strong>で集中</td><td>学術論文</td></tr>
+    </tbody>
+  </table>
+
+  <h3>既存対策と "減らない" 理由</h3>
+  <table>
+    <thead><tr><th>既存対策</th><th>主体</th><th>限界</th></tr></thead>
+    <tbody>
+      <tr><td>ライオン糞忌避剤</td><td>JR東日本盛岡支社（2004〜、岩手大共同）</td><td>1回散布2〜4ヶ月、天候依存／<strong>慣れによる効果低下</strong></td></tr>
+      <tr><td>侵入防止柵</td><td>各社</td><td>設置区間は減るが <strong>"柵終了地点で事故移動"</strong></td></tr>
+      <tr><td>ユカエル×ユクル</td><td>日鐵住金建材</td><td>メンテナンスコスト</td></tr>
+      <tr><td>やわらか車両（衝撃緩和ゴム）</td><td>JR東海紀勢線</td><td><strong>衝突自体は防げず復旧時間短縮のみ</strong></td></tr>
+      <tr><td>シカ離レール</td><td>JR西日本</td><td>静的対策の限界</td></tr>
+    </tbody>
+  </table>
+
+  <h3>"減らない" 5つの構造的理由</h3>
+  <ul>
+    <li>① <strong>静的対策</strong>：固定設置で<strong>慣れる</strong>／設置場所限定</li>
+    <li>② <strong>空間移動</strong>：柵終了地点や別箇所へ事故が移動</li>
+    <li>③ <strong>時間的ピンポイント不可</strong>：「今夜この区間」を狙えない</li>
+    <li>④ <strong>効果検証データが社内に閉じる</strong>：業界横断で学習されない</li>
+    <li>⑤ <strong>コスト</strong>：全線一律設置は財務的に不可能</li>
+  </ul>
+
+  <h2 id="s6c" class="product-section">★ なぜ SKY DOG × KEMONO MAP で本当に減らせるのか — 介入メカニズムの深掘り <span class="badge badge-new">CORE LOGIC</span></h2>
+
+  <p>JR東日本盛岡支社では2004年から岩手大学と共同でライオン糞忌避剤を運用されています。すでに最先端の研究と現場知見をお持ちの貴社に対し、本提案が説得力を持つかどうかは、<strong>「既存対策と何が本質的に違うのか」</strong>を構造的に示せるかにかかります。以下、6つの層で深掘りします。</p>
+
+  <h3>【第1層】介入の4ステップループ — メカニズム</h3>
+  <div style="background:linear-gradient(135deg, #fff7ed 0%, #eef2ff 100%); border:2px solid #ddd; border-radius:10px; padding:24px; margin:18px 0;">
+    <div style="margin-bottom:12px;"><strong style="color:#6366f1;">① 予測（KEMONO MAP）</strong><br>
+    気象 × 季節 × 時刻 × 過去出没 × 個体行動パターンを統合<br>
+    → 例：「○月○日 22:30〜23:15、A区間B地点で出没確率82%」</div>
+    <div style="text-align:center; color:#999; font-weight:700;">▼</div>
+    <div style="margin:12px 0;"><strong style="color:#ea580c;">② 先回り（SKY DOG出動）</strong><br>
+    列車通過予定時刻の30〜60分前にドローンを派遣<br>
+    1拠点ドック → 半径10〜15km圏をカバー</div>
+    <div style="text-align:center; color:#999; font-weight:700;">▼</div>
+    <div style="margin:12px 0;"><strong style="color:#ea580c;">③ 非殺傷介入（SKY DOG）</strong><br>
+    AI画像認識で実個体を捕捉<br>
+    → 音響（ライオン咆哮・猛禽類・高周波）× 光 × 接近圧<br>
+    → 「不快な空間」を作り線路外へ誘導</div>
+    <div style="text-align:center; color:#999; font-weight:700;">▼</div>
+    <div style="margin-top:12px;"><strong style="color:#6366f1;">④ 学習（KEMONO MAPに還流）</strong><br>
+    介入結果（成功/失敗/種別/天候/個体反応）を蓄積<br>
+    → 予測精度・介入戦略が継続的に向上</div>
+  </div>
+
+  <h3>【第2層】既存対策の限界を突破する3つの本質的理由</h3>
+
+  <div class="pillar wildlife-pillar">
+    <div class="pillar-title">A. 「慣れ問題」の構造的克服 ← 最大の差別化</div>
+    <ul>
+      <li>既存対策が失敗する根本原因は<strong>シカが学習して慣れる</strong>こと</li>
+      <li>固定刺激（柵・忌避剤）は<strong>数週間で慣れる現象</strong>が報告されている</li>
+      <li>ドローン介入は<strong>「予測不能な、毎回違う刺激」</strong>を出せる：
+        <ul>
+          <li>出現タイミングをランダム化</li>
+          <li>音響パターンをローテーション（ライオン咆哮／猛禽類／高周波／低周波）</li>
+          <li>接近高度・角度・速度を可変</li>
+        </ul>
+      </li>
+      <li>動物行動学的に<strong>「予測不能な脅威」は恐怖学習が維持される</strong></li>
+      <li>→ <strong>「慣れる対策」から「慣れない対策」への質的転換</strong></li>
+    </ul>
+  </div>
+
+  <div class="pillar wildlife-pillar">
+    <div class="pillar-title">B. 「空間移動問題」の克服</div>
+    <ul>
+      <li>既存対策の典型失敗：柵終端や脇から侵入される</li>
+      <li>KEMONO MAPは<strong>個体・群れの移動パターン</strong>を学習</li>
+      <li>過去データから<strong>柵終了地点・迂回ルート</strong>を予測モデルに組込み</li>
+      <li>SKY DOGは<strong>固定設備不要</strong>なので、シカの行動変化に追従可能</li>
+      <li>→ 「シカが対策を学んで回避する」イタチごっこを止める</li>
+    </ul>
+  </div>
+
+  <div class="pillar wildlife-pillar">
+    <div class="pillar-title">C. 「時間ピンポイント介入」</div>
+    <ul>
+      <li>出没は時間帯が偏る：夕方〜夜間集中、繁殖期前後の数週間ピーク</li>
+      <li>全時間帯を柵・忌避剤でカバーは<strong>過剰投資</strong></li>
+      <li>KEMONO MAPで<strong>危険時間帯のみ集中介入</strong></li>
+      <li>1拠点ドローンが<strong>複数区間を時間差カバー</strong></li>
+      <li>→ 「全線守る」から「危ない時の危ない場所」のみ守る効率化</li>
+    </ul>
+  </div>
+
+  <h3>【第3層】skyerの実証実績が裏付ける説得力</h3>
+
+  <div class="evolution-card skydog">
+    <div class="evolution-title">カワウ繁殖抑制6年運用（鳥取県）— 同型問題の解決経験</div>
+    カワウは群生種・繁殖力高・人間慣れする種。既存対策（爆音器・忌避剤）で慣れ問題が発生していた中、skyerは<strong>繁殖期前のピンポイントドローン介入</strong>で抑制に成功。<strong>「予測×動的介入」のロジックがシカに転用可能</strong>であることの強力な実証です。
+  </div>
+
+  <div class="evolution-card skydog">
+    <div class="evolution-title">鳥取砂丘6年警備実績 — 慣れない運用の継続実証</div>
+    砂丘という特殊環境＋天然記念物の脆弱性のもとで、入域者の不快感を出さずに違反者だけ的確に検知・対応。<strong>6年継続できている = 慣れさせない運用パターンを確立済み</strong>です。
+  </div>
+
+  <h3>【第4層】技術的フィージビリティ</h3>
+  <table>
+    <thead><tr><th>項目</th><th>数値</th><th>根拠</th></tr></thead>
+    <tbody>
+      <tr><td>1拠点カバー範囲</td><td>半径10〜15km</td><td>市販機20-40分飛行</td></tr>
+      <tr><td>100km路線の必要拠点数</td><td>7〜10拠点</td><td>上記カバー範囲ベース</td></tr>
+      <tr><td>夜間飛行対応</td><td>レベル3.5まで</td><td>skyer実績ベース</td></tr>
+      <tr><td>衝突の70%が夜間</td><td>→ ドローン優位</td><td>人員巡回は不可能</td></tr>
+      <tr><td>悪天候時</td><td>静的対策にフォールバック</td><td>既存対策と補完設計</td></tr>
+    </tbody>
+  </table>
+
+  <h4 style="color:var(--biz); margin-top:18px;">コスト比較</h4>
+  <table>
+    <thead><tr><th>対策</th><th>コスト構造</th></tr></thead>
+    <tbody>
+      <tr><td>柵</td><td>1km数百万円〜（恒久投資）</td></tr>
+      <tr><td>忌避剤散布</td><td>数百万円/年/区間（継続コスト）</td></tr>
+      <tr style="background:#f0fdfa"><td><strong>本提案</strong></td><td><strong>1拠点 数百万円/年 × 必要拠点（ピンポイント時空間投資）</strong></td></tr>
+    </tbody>
+  </table>
+
+  <h3>【第5層】想定される反論への先回り（FAQ）</h3>
+
+  <div class="evolution-card">
+    <div class="evolution-title">Q1. シカもドローンに慣れるのでは？</div>
+    A. 固定刺激と違いドローンは出現タイミング・場所・刺激パターンを可変できます。動物行動学的に「予測不能な脅威」は慣れにくく、<strong>カワウ6年運用で実証済み</strong>です。
+  </div>
+
+  <div class="evolution-card">
+    <div class="evolution-title">Q2. 天候不良時はどうする？</div>
+    A. 既存対策（柵・忌避剤）が静的防御として残るため<strong>補完設計</strong>です。むしろ晴天日に集中介入できれば年間効果は十分です。
+  </div>
+
+  <div class="evolution-card">
+    <div class="evolution-title">Q3. 広範囲をカバーできるのか？</div>
+    A. 全線一律ではなく、<strong>KEMONO MAPで特定した高リスク区間に集中</strong>。1拠点で半径10-15kmカバー、ローカル線100km＝7-10拠点で全線対応可。
+  </div>
+
+  <div class="evolution-card">
+    <div class="evolution-title">Q4. 予測精度はどれくらい？</div>
+    A. 自治体6年運用データとJR東日本フィールドデータの結合で、<strong>Phase 1終了時に予測精度70%超を目標</strong>。Phase 0で初期測定し継続更新します。
+  </div>
+
+  <div class="evolution-card">
+    <div class="evolution-title">Q5. 既にJR盛岡で岩手大と研究してるのに何が新しい？</div>
+    A. 既存研究は「<strong>忌避剤＝静的対策</strong>」の検証です。本提案は「<strong>予測×動的介入</strong>」というメカニズム自体が異なります。むしろ既存研究知見（ライオン糞の効果）を<strong>SKY DOGの音響戦略に取り込み</strong>、共同進化が可能です。
+  </div>
+
+  <h3>【第6層】段階的検証ロジック（採択後3ヶ月）— 具体的な期間・場所</h3>
+
+  <h4 style="color:var(--jr-green);">実証フィールド — ローカル線1区間に集中</h4>
+
+  <p>Phase 0は<strong>ローカル線1区間に集中</strong>します。主たる検証テーマは件数・損失とも最大の<strong>シカ衝突対策</strong>。同一の運用チーム・同一のドック・同一のSKY DOG機体で、追加コストなく<strong>沿線の架線・信号設備・小駅の営巣状況確認と非殺傷除去</strong>も並行実施します。これにより、シカ衝突対策の本筋を崩さずに、SKY DOGの応用範囲も同時検証できます。</p>
+
+  <h4 style="color:var(--jr-green);">Phase 0スコープ（ローカル線1区間内で完結）</h4>
+  <table>
+    <thead><tr><th>スコープ</th><th>対象</th><th>KPI</th></tr></thead>
+    <tbody>
+      <tr style="background:#fef3c7"><td><strong>主：シカ衝突対策</strong></td><td>選定区間の介入区間／対照区間</td><td><strong>衝突件数▲20〜35%</strong>／予測精度60%以上／非殺傷率100%</td></tr>
+      <tr><td>副：沿線営巣対策</td><td>沿線架線・信号設備・小駅</td><td>営巣調査件数／非殺傷除去件数／繁殖期前介入の効果</td></tr>
+      <tr><td>付随：倒木・支障物対応</td><td>必要時の緊急対応</td><td>対応件数／対応時間</td></tr>
+    </tbody>
+  </table>
+
+  <div class="pillar">
+    <div class="pillar-title">▎推奨①：山田線（盛岡〜宮古）</div>
+    <ul>
+      <li>盛岡支社＝<strong>岩手大学ライオン糞共同研究（2004〜）の本拠地</strong></li>
+      <li>既存研究知見との<strong>直接連携</strong>が可能（音響戦略への取り込み等）</li>
+      <li>シカ衝突多発区間として運用検証データが取りやすい</li>
+      <li>盛岡支社・研究開発センターとの三者連携が組みやすい</li>
+    </ul>
+  </div>
+
+  <div class="pillar">
+    <div class="pillar-title">▎推奨②：上越線（水上〜越後湯沢）</div>
+    <ul>
+      <li>雪減少影響大、衝突多発区間</li>
+      <li>新潟支社の<strong>VTOL自動飛行実証（2025年12月上越線）</strong>と地理的近接</li>
+      <li>既存ドローン運用との連動可能性</li>
+    </ul>
+  </div>
+
+  <div class="callout">
+    <strong>山田線（推奨①）</strong>を本命としつつ、貴社内の社内調整・運用許可・既存施策との連携可能性に応じて<strong>上越線（推奨②）</strong>または同等のローカル線への変更も柔軟に対応します。代替候補：米坂線／小海線。
+  </div>
+
+  <h4 style="color:var(--jr-green);">ロケーション選定基準</h4>
+  <ul>
+    <li>① <strong>シカ衝突発生頻度</strong>：定量測定可能な水準（年間50件以上が目安）</li>
+    <li>② <strong>既存研究との連携性</strong>：岩手大ライオン糞研究／新潟VTOL実証等</li>
+    <li>③ <strong>安全確保のしやすさ</strong>：飛行許可・運用調整の難易度</li>
+    <li>④ <strong>対照群設定の可能性</strong>：介入区間vs非介入区間の比較が成立する地形</li>
+    <li>⑤ <strong>拡張性</strong>：他路線への横展開時の参照モデル化</li>
+  </ul>
+
+  <h4 style="color:var(--jr-green); margin-top:24px;">3ヶ月実証スケジュール（週次）</h4>
+
+  <table>
+    <thead><tr><th>週</th><th>アクション</th><th>アウトプット</th></tr></thead>
+    <tbody>
+      <tr style="background:#f0f7f3"><td colspan="3"><strong>Month 1（Week 1-4）：準備・モデル初期化</strong></td></tr>
+      <tr><td>W1</td><td>キックオフ／JR東日本研究開発センター・盛岡支社（または新潟支社）との合同会議／既存出没データ受領</td><td>プロジェクト計画書、データ取込開始</td></tr>
+      <tr><td>W2</td><td>KEMONO MAPへの既存データ取込／予測モデル初期パラメータ設定／対象区間の介入区間・対照区間の選定</td><td>初期予測モデル v0、実証区間確定</td></tr>
+      <tr><td>W3</td><td>SKY DOG実証機材搬入／現地調査・関係自治体挨拶／既存対策（柵・忌避剤）の配置確認</td><td>機材セットアップ完了、自治体合意形成</td></tr>
+      <tr><td>W4</td><td>飛行許可・電波利用・安全確保等の運用準備完了／専任2名常駐開始</td><td>運用開始準備完了</td></tr>
+      <tr style="background:#f0f7f3"><td colspan="3"><strong>Month 2（Week 5-8）：先行運用・予測精度測定</strong></td></tr>
+      <tr><td>W5-6</td><td>SKY DOG先行運用開始（介入なし、検知のみ）／対象区間でシカ出没の継続観測／<strong>沿線営巣の悉皆調査</strong></td><td>実出没データ蓄積／営巣マップ作成</td></tr>
+      <tr><td>W7-8</td><td>実出没データと KEMONO MAP 予測の照合／<strong>初期予測精度を測定</strong>／<strong>営巣箇所の非殺傷除去を順次実施</strong></td><td>予測精度レポート（目標60%以上）／営巣除去件数</td></tr>
+      <tr style="background:#f0f7f3"><td colspan="3"><strong>Month 3（Week 9-12）：介入運用・対照群比較</strong></td></tr>
+      <tr><td>W9-10</td><td>シカ介入運用開始（音響・光・接近圧）／介入区間で忌避・誘導の実運用／<strong>営巣除去継続</strong></td><td>介入実績データ</td></tr>
+      <tr><td>W11</td><td>介入区間と非介入区間（対照区間）の衝突件数比較／介入成功率測定／<strong>営巣再形成の有無確認</strong></td><td>中間効果測定</td></tr>
+      <tr style="background:#fef3c7"><td>W12</td><td><strong>最終評価レポート提出</strong>（衝突件数削減率／救命動物数／予測精度／介入成功率／<strong>営巣除去実績</strong>）</td><td>Phase 1継続可否判断材料</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout">
+    <strong>Phase 0は3ヶ月で完結する検証フェーズ</strong>です。Week 12時点で削減効果が確認できなければ、Phase 1継続判断を貴社にお委ねします。逆に効果が確認されれば、Phase 1（関東主要10駅＋ローカル2路線拡大）へスムーズに移行します。
+  </div>
+
+  <div class="callout callout-product">
+    本提案は「<strong>ハッタリの未来図</strong>」ではなく「<strong>3ヶ月で検証可能な仮説</strong>」です。Phase 0で削減効果が確認できなければ、Phase 1以降の継続判断を貴社にお委ねします。それほどに、メカニズムへの自信があります。
+  </div>
+
+  <h3>事故削減見込み試算（前提：上記メカニズム成立時）</h3>
+  <table>
+    <thead><tr><th>シナリオ</th><th>削減率</th><th>削減件数（1,345件ベース）</th><th>削減損失（150万円/件）</th></tr></thead>
+    <tbody>
+      <tr><td>保守</td><td>▲20%</td><td>約270件</td><td><strong>約 4億円／年</strong></td></tr>
+      <tr style="background:#fef3c7"><td>中位</td><td>▲30%</td><td>約400件</td><td><strong>約 6億円／年</strong></td></tr>
+      <tr><td>積極</td><td>▲35%</td><td>約470件</td><td><strong>約 7億円／年</strong></td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout">
+    <strong>推定損失20.2億円のうち、年間4〜7億円規模の削減効果が見込めます</strong>。同時に削減件数分だけ救命動物数が増え、TNFD開示KPIに直接貢献します。
+  </div>
+
+  <h2 id="s7">7. JR東日本にもたらす独自価値</h2>
+  <ul>
+    <li><strong>公開課題リストの運輸セクション課題群を継続的に解決</strong>（保線・駅運営の現場負担軽減）</li>
+    <li><strong>既存ドローンパートナーが手を出さない領域</strong>を埋め、グループ全体のドローン活用を完成形へ</li>
+    <li><strong>「Wildlife-Positive Railway」</strong>という世界に類を見ない鉄道ブランド価値の獲得</li>
+    <li><strong>TNFD開示の質的飛躍</strong> — KEMONO MAPの救命動物数データで業界初の定量開示</li>
+    <li><strong>グループ外売上拡大</strong>（Phase 3以降の外販・JV事業）</li>
+    <li><strong>スタートアップ共創成功事例の象徴ケース</strong>として今後のJTOS等にも好影響</li>
+  </ul>
+
+  <h2 id="s8">8. TNFD・ネイチャーポジティブへの直接接続</h2>
+  <table>
+    <thead><tr><th>Phase</th><th>JR東日本のNP施策</th><th>特性</th></tr></thead>
+    <tbody>
+      <tr><td>従来1</td><td>ふるさとの森づくり（植樹）</td><td>スポット型・伝統的CSR</td></tr>
+      <tr><td>従来2</td><td>魚道整備</td><td>個別インフラ単位</td></tr>
+      <tr><td>従来3</td><td>JTOS×バイオーム「いきものGO」</td><td>市民参加型データ収集（B2C）</td></tr>
+      <tr style="background:var(--wildlife)"><td><strong>本提案</strong></td><td><strong>SKY DOG × KEMONO MAP による沿線連続運用</strong></td><td><strong>B2B運用基盤（業界初）</strong></td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="s9">9. 求める支援</h2>
+  <ul>
+    <li>ローカル線1区間（山田線または上越線）における<strong>実証フィールド提供</strong></li>
+    <li>JR東日本ビルテック、研究開発センター、クロスステーション、不動産、サステナビリティ部門との<strong>横串連携マッチング</strong></li>
+    <li>JR東日本スタートアップ社・JTOSとの<strong>戦略的接続</strong></li>
+    <li>沿線運用許可・社内調整の支援</li>
+    <li>実証費用の一部支援（skyer側500万円自己投資との合算で実証を加速）</li>
+  </ul>
+
+  <h2 id="s10">10. 締めの一言</h2>
+  <div class="closing">
+    <p>鉄道沿線の "鳥獣"、"営巣"、"侵入"、"倒木"。<br>
+    これらは<strong>毎日、現場で誰かが対処している、ごく具体的な痛み</strong>です。<br>
+    同時に、これらの "対処" の裏側には<strong>毎日、命を落としている野生動物</strong>がいます。</p>
+    <p>私たちskyerは、自治体と6年、<strong>"動物を傷つけずに、共に守る"</strong> 運用に向き合い続け、その経験を<strong style="color:#ea580c">SKY DOG</strong>（フィールド運用サービス）と<strong style="color:#6366f1">KEMONO MAP</strong>（出没予測プラットフォーム）という2つのプロダクトに結晶化させました。</p>
+    <p><strong>"これから作る" 構想ではなく、"すでに動いている" プロダクト</strong>を、JR東日本沿線で進化させたい。そのために、初年度500万円の自己投資、専任2名の常駐、3年計画の最優先プロジェクト化、そして成果連動契約・JV設立・CVC受入といったあらゆるリスク共有の選択肢を、共創パートナーとして提示します。</p>
+    <div class="quote">
+      "鉄道を守る" と "動物を守る" は対立しない。<br>
+      むしろ、両立させる運用こそが、これからの鉄道インフラの新しい標準である。
+    </div>
+    <p>JR東日本沿線から、その世界初の標準を、共に世界に示しませんか。</p>
+  </div>
+
+  <div class="footer">
+    株式会社skyer ／ JR東日本スタートアッププログラム 2026 春募集 応募提案書 v3.5 FINAL（提出用最新版）<br>
+    更新日：2026年5月20日 ／ 応募締切：2026年5月21日24時
+  </div>
+
+</div>
+</body>
+</html>
